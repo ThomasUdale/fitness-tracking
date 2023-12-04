@@ -3,6 +3,8 @@ from fastapi.staticfiles import StaticFiles
 from routes import router
 import subprocess
 from contextlib import asynccontextmanager
+import uvicorn
+from db import conn
 
 
 @asynccontextmanager
@@ -31,6 +33,5 @@ app.include_router(router)
 app.mount("/static", StaticFiles(directory="./static"), name="static")
 
 if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    print(conn)
+    uvicorn.run(app, host="127.0.0.1", port=8000) 
