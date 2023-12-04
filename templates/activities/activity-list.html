@@ -1,0 +1,33 @@
+{% extends "/shared/_base.html" %}
+
+{% block content %}
+  <div id="activities-list-div">
+    <button hx-get="/get-activities"
+      hx-trigger="click"
+      hx-target="#activities-list-div"
+      hx-swap="outerHTML"
+    >
+      Refresh Activities
+    </button>
+
+    <table style="width:50%">
+      <!-- table header -->
+      {% if activities%}
+      <tr>
+         {% for key in activities[0] %}
+         <th> {{ key }} </th>
+         {% endfor %}
+      </tr>
+      {% endif %}
+
+      <!-- table rows -->
+      {% for dict_item in activities %}
+      <tr>
+         {% for value in dict_item.values() %}
+         <td> {{ value }} </td>
+         {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}

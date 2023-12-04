@@ -4,12 +4,40 @@
   <div class="bg-slate-50 max-w-screen-lg">
     <h1 class="text-3xl font-bold uppercase hover:text-blue-400">Simple Site</h1>
     <p>This is just a simple site for you</p>
-    <button hx-get="/clicked"
+
+    <div id="record-activity-div">
+      <form hx-post="/add_activity" hx-swap="none">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date">
+        <br>
+        <label for="sport">Sport</label>
+        <input type="text" id="sport" name="sport">
+        <br>
+        <label for="duration">Duration</label>
+        <input type="number" id="duration" name="duration">
+        <br>
+        <label for="distance">Distance</label>
+        <input type="number" id="distance" name="distance">
+        <br>
+        <label for="avg_power">Average Power</label>
+        <input type="number" id="avg_power" name="avg_power">
+        <br>
+        <label for="avg_speed">Average Speed</label>
+        <input type="number" id="avg_speed" name="avg_speed">
+        <br>
+        <label for="avg_hr">Average Heartrate</label>
+        <input type="number" id="avg_hr" name="avg_hr">
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <button hx-get="/get-activities"
       hx-trigger="click"
       hx-target="this"
       hx-swap="outerHTML"
     >
-      Click Me!
+      List Activities!
     </button>
   </div>
 {% endblock %}
